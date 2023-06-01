@@ -3,6 +3,8 @@ import shutil
 import itertools
 from pathlib import Path
 from importlib import import_module
+import bluesky.resources
+import os.path
 
 try:
     from importlib.resources import files
@@ -43,7 +45,19 @@ class ResourcePath(MultiplexedPath):
     def __init__(self, *paths):
         base = files('bluesky.resources')
         paths = list(paths) + (base._paths if isinstance(base, MultiplexedPath) else [base])
-        super().__init__(*paths)
+
+        # Patch to satisfy PyInstaller, clean later
+        print(paths)
+        print(*paths)
+        # print(type(*paths))
+        temp_lst = []
+        for path in paths:
+            if os.path.isdir(path):
+                temp_lst.append(path)
+
+        if len(temp_lst) > 0:
+            super().__init__(*temp_lst)
+        # super().__init__(*paths)
 
     def appendpath(self, path):
         self._paths.append(path)

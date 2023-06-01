@@ -61,7 +61,11 @@ class Server(Thread):
     def addnodes(self, count=1, startscn=None):
         ''' Add [count] nodes to this server. '''
         for _ in range(count):
-            args = [sys.executable, '-m', 'bluesky', '--sim']
+            # args = [sys.executable, '-m', 'bluesky', '--sim']
+            args = [sys.executable, 'bluesky', '--sim']
+            # Removed -m to fix error with PyInstaller
+            print('TODO: Figure out what -m does above')
+
             if self.altconfig:
                 args.extend(['--configfile', self.altconfig])
             if startscn:

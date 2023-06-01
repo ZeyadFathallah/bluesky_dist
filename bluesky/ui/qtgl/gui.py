@@ -6,9 +6,9 @@ try:
     from PyQt5.QtGui import QFont
     
 except ImportError:
+    print('Initial culprit')
     from PyQt6.QtCore import Qt, QEvent, qInstallMessageHandler, \
         QT_VERSION, QT_VERSION_STR
-
     from PyQt6.QtCore import QtMsgType
     from PyQt6.QtWidgets import QApplication, QErrorMessage
     from PyQt6.QtGui import QFont
@@ -47,6 +47,8 @@ def start(hostname=None):
     #QApplication.setHighDpiScaleFactorRoundingPolicy(Qt.HighDpiScaleFactorRoundingPolicy.PassThrough)
     #QApplication.setAttribute(Qt.AA_EnableHighDpiScaling)
     # only pyqt5: QApplication.setAttribute(Qt.AA_UseHighDpiPixmaps)
+
+    os.environ["QT_ENABLE_SANDBOX"] = "0"
 
     # Start the Qt main object
     app = QApplication(sys.argv[:1])

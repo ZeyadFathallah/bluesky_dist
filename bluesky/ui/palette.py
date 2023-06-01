@@ -5,8 +5,13 @@ bs.settings.set_variable_defaults(colour_palette='bluesky-default', gfx_path='gr
 def init():
     # Load the palette file selected in settings
     pfile = bs.resource(bs.settings.gfx_path) / 'palettes' / bs.settings.colour_palette
+    # pfile = '/Users/zeyad/PycharmProjects/bluesky_dist/bluesky/resources/graphics/palettes/bluesky-default'
+    # print(pfile)
+    # print(type(pfile))
+    # print('pfile above')
     if pfile.is_file():
-        print('Loading palette ' + bs.settings.colour_palette)
+        # print('Loading palette ' + bs.settings.colour_palette)
+        print('Loading palette')
         exec(compile(open(pfile).read(), pfile, 'exec'), globals())
         return True
     else:

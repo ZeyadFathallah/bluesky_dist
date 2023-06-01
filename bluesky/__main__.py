@@ -53,7 +53,9 @@ def main():
 
         # Start gui if client or main server/gui combination is started here
         if bs.gui == 'qtgl':
+            print('MARKER 1')
             from bluesky.ui import qtgl
+            print('MARKER 2')
             qtgl.start(hostname=args.get('hostname'))
 
         elif bs.gui == 'console':

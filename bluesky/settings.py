@@ -4,8 +4,18 @@ import inspect
 from bluesky.pathfinder import resource
 
 # Default config file path
-_cfgfile = 'settings.cfg'
 
+# Quick patch to satisfy PyInstaller
+_cfgfile = 'settings.cfg'
+navdata_path = '/Users/zeyad/PycharmProjects/bluesky_dist/bluesky/resources/navdata'
+gfx_path = '/Users/zeyad/PycharmProjects/bluesky_dist/bluesky/resources/graphics'
+colour_palette = 'bluesky-default'
+
+event_port = 9000
+stream_port = 9001
+simevent_port = 10000
+simstream_port = 10001
+enable_discovery = False
 
 def init(cfgfile=''):
     '''Initialize configuration.
